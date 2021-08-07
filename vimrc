@@ -29,7 +29,7 @@ set shiftwidth=4
 set background=dark
 colorscheme hybrid
 highlight LineNr ctermfg=247
-hi NonText ctermfg=8
+hi NonText ctermfg=241
 hi SpecialKey ctermfg=8
 hi Comment ctermfg=95
 hi CursorLine ctermbg=238
