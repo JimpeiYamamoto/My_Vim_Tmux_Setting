@@ -30,7 +30,7 @@ set background=dark
 colorscheme hybrid
 highlight LineNr ctermfg=247
 hi NonText ctermfg=241
-hi SpecialKey ctermfg=8
+hi SpecialKey ctermfg=241
 hi Comment ctermfg=95
 hi CursorLine ctermbg=238
 
