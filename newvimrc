@@ -1,0 +1,122 @@
+map <f6> <esc>:Stdheader
+call plug#begin('~/.vim/plugged')
+Plug 'pbondoer/vim-42header'
+call plug#end()
+
+"auto[]
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+set number
+set title
+set ruler
+set cursorline
+set laststatus=2
+set cmdheight=1
+set wildmenu
+set clipboard&
+set clipboard^=unnamedplus
+"set clipboard+=autoselect
+"set paste
+
+set tabstop=4
+set autoindent
+set list
+set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set smarttab
+set shiftwidth=4
+
+noremap dd dd:wv<CR>Y
+noremap y y:wv<CR>y
+noremap Y Y:wv<CR>Y
+noremap p :rv!<CR>p
+
+"GO
+set autowrite
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+"nnoremap <leader>a : cclose<CR>
+let g:go_fmt_cmmand = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+
+"neocomplete.vimの設定
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#min_keyword_length = 3
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#auto_completion_start_length = 1
+"inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+
+"vim clangの設定
+let g:clang_auto = 0
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
+let g:clang_c_completeopt   = 'menuone'
+let g:clang_cpp_completeopt = 'menuone'
+
+let g:clang_exec = 'clang'
+let g:clang_format_exec = 'clang-format'
+
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '
+  \ -std=c++1z 
+  \ -stdlib=libc++ 
+  \ -pedantic-errors
+  \ '
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+"Required:
+set runtimepath+=/home/yjimpei/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('/home/yjimpei/.cache/dein')
+
+" Let dein manage dein
+" Required:
+call dein#add('/home/yjimpei/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+" Add or remove your plugins here like this:
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('justmao945/vim-clang')
+
+" Required:
+call dein#end()
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+
+"color
+set background=dark
+colorscheme hybrid
+highlight LineNr ctermfg=247
+hi NonText ctermfg=241
+hi SpecialKey ctermfg=241
+hi Comment ctermfg=95
+hi CursorLine ctermbg=238
+
+set completeopt=menuone
+let g:neocomplcache_enable_auto_close_preview = 0
